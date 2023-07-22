@@ -1,0 +1,28 @@
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        int[] ans = new int[2];
+        int i = 0;
+        int j = nums.length - 1;
+        
+        // Find the leftmost occurrence of the target
+        while (i <= j && nums[i] != target) {
+            i++;
+        }
+        
+        // Find the rightmost occurrence of the target
+        while (j >= i && nums[j] != target) {
+            j--;
+        }
+        
+        if (i <= j) {
+            ans[0] = i;
+            ans[1] = j;
+        } else {
+            // Target not found, set both indices to -1
+            ans[0] = -1;
+            ans[1] = -1;
+        }
+        
+        return ans;
+    }
+}
