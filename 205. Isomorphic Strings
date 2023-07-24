@@ -1,0 +1,22 @@
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        if(s.length()!=t.length()) return false;
+        Map<Character,Character> map=new HashMap<>();
+        
+        for(int i=0;i<s.length();i++){
+            char firstptr=s.charAt(i);
+            char secondptr=t.charAt(i);
+            if(!map.containsKey(firstptr)){
+                if(!map.containsValue(secondptr)){
+                    map.put(firstptr,secondptr);
+                }
+                else return false;
+            }
+            else{
+                char mappedvalue=map.get(firstptr);  //this is to check the value which is already present in map with secondptr.
+                if(mappedvalue!=secondptr) return false;
+            }
+        }
+        return true;
+    }
+}
