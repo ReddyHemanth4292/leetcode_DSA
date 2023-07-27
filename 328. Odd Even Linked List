@@ -1,0 +1,30 @@
+class Solution {
+    public ListNode oddEvenList(ListNode head) {
+        if (head == null || head.next == null || head.next.next == null) return head;
+
+        ListNode oddlist = head;
+        ListNode evenlist = head.next;
+        ListNode oddtemp = oddlist;
+        ListNode eventemp = evenlist;
+        int cnt = 1;
+        head = head.next.next;
+
+        while (head != null) {
+            if (cnt % 2 != 0) {
+                oddtemp.next = head;
+                head = head.next;
+                oddtemp = oddtemp.next;
+            } else {
+                eventemp.next = head;
+                head = head.next;
+                eventemp = eventemp.next;
+            }
+            cnt++;
+        }
+
+        oddtemp.next = evenlist;
+        eventemp.next = null; // Set the last even node's next to null to terminate the list
+
+        return oddlist;
+    }
+}
