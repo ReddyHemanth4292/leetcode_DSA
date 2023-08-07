@@ -1,3 +1,4 @@
+
 class Solution {
     public static TreeNode inorder(TreeNode root,List<Integer> mylist){
         if(root==null) return root;
